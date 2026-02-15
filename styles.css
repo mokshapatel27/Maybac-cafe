@@ -2,7 +2,15 @@
    MAYBAC CAFE - MODERN PREMIUM WEBSITE
    Golden & Maroon Theme - Redesigned
 ========================================== */
+/* Force preloader to hide after 2 seconds */
+@keyframes forceHide {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
 
+.preloader {
+    animation: forceHide 0.5s ease 2s forwards;
+}
 /* CSS Variables */
 :root {
     --primary-maroon: #7D1935;
@@ -284,10 +292,10 @@ a {
    HERO SECTION
 ======================================== */
 .hero {
-    height: 100vh;
+    height: 100svh;
     min-height: 600px;
     background: linear-gradient(135deg, rgba(125, 25, 53, 0.7) 0%, rgba(90, 15, 38, 0.7) 100%),
-                url('img1.png') center/cover no-repeat fixed;
+                url('img1.png') center/cover no-repeat ;
     position: relative;
     display: flex;
     align-items: center;
@@ -366,6 +374,19 @@ a {
     gap: 20px;
     justify-content: center;
     animation: fadeInUp 1s ease 1.1s both;
+}
+
+@media (max-width: 768px) {
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-buttons a {
+        width: 85%;
+        text-align: center;
+    }
 }
 
 .btn {
@@ -811,6 +832,101 @@ a {
     
     .slide-wrapper:not(.active) {
         display: none;
+    }
+}
+
+/* ========================================
+   MENU GRID SECTION
+======================================== */
+.moments {
+    padding: 120px 0;
+    background: var(--cream);
+}
+
+.moments-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.moment-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    height: 500px;
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.moment-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(125, 25, 53, 0.3);
+}
+
+.moment-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.moment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s ease;
+}
+
+.moment-card:hover .moment-image img {
+    transform: scale(1.1);
+}
+
+.moment-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(125, 25, 53, 0.7), rgba(212, 175, 55, 0.7));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.moment-card:hover .moment-overlay {
+    opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .moments-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .moments {
+        padding: 80px 0;
+    }
+    
+    .moments-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .moment-card {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .moments-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .moment-card {
+        height: 300px;
     }
 }
 
@@ -1430,15 +1546,6 @@ a {
     
     .footer-brand h2 {
         font-size: 1.75rem;
-    }
-    
-    /* Scroll to top button */
-    .scroll-to-top {
-        width: 45px;
-        height: 45px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 1.2rem;
     }
 }
 
