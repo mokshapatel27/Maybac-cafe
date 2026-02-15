@@ -287,7 +287,7 @@ a {
     height: 100vh;
     min-height: 600px;
     background: linear-gradient(135deg, rgba(125, 25, 53, 0.7) 0%, rgba(90, 15, 38, 0.7) 100%),
-                url('img1.jpg') center/cover no-repeat fixed;
+                url('img1.png') center/cover no-repeat fixed;
     position: relative;
     display: flex;
     align-items: center;
