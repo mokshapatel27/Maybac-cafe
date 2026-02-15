@@ -2,7 +2,15 @@
    MAYBAC CAFE - MODERN PREMIUM WEBSITE
    Golden & Maroon Theme - Redesigned
 ========================================== */
+/* Force preloader to hide after 2 seconds */
+@keyframes forceHide {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
 
+.preloader {
+    animation: forceHide 0.5s ease 2s forwards;
+}
 /* CSS Variables */
 :root {
     --primary-maroon: #7D1935;
