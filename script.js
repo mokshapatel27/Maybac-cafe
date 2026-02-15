@@ -5,6 +5,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ========================================
+    // MOBILE DETECTION & OPTIMIZATION
+    // ========================================
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isSmallScreen = window.innerWidth <= 768;
+    
+    // Disable parallax effects on mobile for performance
+    if (isMobile || isSmallScreen) {
+        document.body.classList.add('mobile-device');
+    }
+    
+    // ========================================
     // PRELOADER
     // ========================================
     const preloader = document.getElementById('preloader');
@@ -239,16 +250,48 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update on resize
         window.addEventListener('resize', updateSliderView);
         
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        const sliderContainer = document.querySelector('.slider-container');
+        
+        if (sliderContainer) {
+            sliderContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            sliderContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe left - next slide
+                        nextSlide();
+                    } else {
+                        // Swipe right - previous slide
+                        prevSlide();
+                    }
+                }
+            }
+        }
+        
         // Initial setup
         updateSliderView();
     }
     
     // ========================================
-    // PARALLAX EFFECT - EXPERIENCE IMAGE
+    // PARALLAX EFFECT - EXPERIENCE IMAGE (Desktop Only)
     // ========================================
     const parallaxImage = document.querySelector('.parallax-image');
     
-    if (parallaxImage) {
+    if (parallaxImage && !isMobile && !isSmallScreen) {
         const experienceImage = document.querySelector('.experience-image');
         
         experienceImage.addEventListener('mousemove', (e) => {
@@ -291,16 +334,18 @@ document.addEventListener('DOMContentLoaded', function() {
     revealElements.forEach(el => observer.observe(el));
     
     // ========================================
-    // PARALLAX HERO BACKGROUND
+    // PARALLAX HERO BACKGROUND (Desktop Only)
     // ========================================
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const hero = document.querySelector('.hero');
-        
-        if (hero && scrolled < window.innerHeight) {
-            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
-        }
-    });
+    if (!isMobile && !isSmallScreen) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const hero = document.querySelector('.hero');
+            
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            }
+        });
+    }
     
     // ========================================
     // SMOOTH SECTION REVEAL
