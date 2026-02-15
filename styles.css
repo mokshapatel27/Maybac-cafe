@@ -845,7 +845,7 @@ a {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    height: 400px;
+    height: 500px;
     cursor: pointer;
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
@@ -865,7 +865,7 @@ a {
 .moment-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.6s ease;
 }
 
