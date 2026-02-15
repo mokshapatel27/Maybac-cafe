@@ -284,7 +284,7 @@ a {
    HERO SECTION
 ======================================== */
 .hero {
-    height: 100vh;
+    height: 100svh;
     min-height: 600px;
     background: linear-gradient(135deg, rgba(125, 25, 53, 0.7) 0%, rgba(90, 15, 38, 0.7) 100%),
                 url('img1.png') center/cover no-repeat ;
