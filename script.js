@@ -18,13 +18,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
     // PRELOADER
     // ========================================
-    const preloader = document.getElementById('preloader');
-    
-    window.addEventListener('load', () => {
-        setTimeout(() => {
+// Force preloader to hide
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
             preloader.classList.add('hidden');
-        }, 1500);
-    });
+            // Extra safety - remove from DOM after animation
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }
+    }, 1500);
+});
+
+// Emergency fallback - hide after 3 seconds no matter what
+setTimeout(() => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('hidden');
+        preloader.style.display = 'none';
+    }
+}, 3000);
     
     // ========================================
     // NAVIGATION
