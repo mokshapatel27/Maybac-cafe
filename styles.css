@@ -52,7 +52,7 @@ a { text-decoration: none; color: inherit; }
 .hamburger span { width: 30px; height: 3px; background: var(--primary-gold); transition: var(--transition); border-radius: 3px; }
 
 /* Hero */
-.hero { height: 100svh; min-height: 600px; background: linear-gradient(135deg, rgba(125, 25, 53, 0.7) 0%, rgba(90, 15, 38, 0.7) 100%), url('img1.png') center/cover no-repeat fixed; position: relative; display: flex; align-items: center; justify-content: center; }
+.hero { height: 100vh; min-height: 600px; background: linear-gradient(135deg, rgba(125, 25, 53, 0.7) 0%, rgba(90, 15, 38, 0.7) 100%), url('img1.png') center/cover no-repeat fixed; position: relative; display: flex; align-items: center; justify-content: center; }
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%); }
 .hero-content { position: relative; z-index: 2; text-align: center; }
 .title-line { display: block; font-family: var(--font-body); font-size: 1.2rem; font-weight: 300; letter-spacing: 4px; color: var(--light-gold); margin-bottom: 15px; }
@@ -97,7 +97,7 @@ a { text-decoration: none; color: inherit; }
 .stat-label { display: block; font-size: 1rem; color: var(--cream); margin-top: 10px; letter-spacing: 2px; }
 
 /* Experience */
-.experience { min-height: 100svh; background: var(--cream); display: flex; align-items: center; padding: 100px 20px; }
+.experience { min-height: 100vh; background: var(--cream); display: flex; align-items: center; padding: 100px 20px; }
 .experience-wrapper { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
 .experience-text { padding: 40px; }
 .experience-text p { font-size: 1.2rem; line-height: 2; color: #555; margin-top: 30px; }
