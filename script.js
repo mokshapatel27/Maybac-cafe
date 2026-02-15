@@ -436,6 +436,15 @@ document.addEventListener('DOMContentLoaded', function() {
     featureItems.forEach((item, index) => {
         item.style.transitionDelay = `${index * 0.1}s`;
     });
+
+        // ========================================
+    // MENU CARDS STAGGER ANIMATION
+    // ========================================
+    const momentCards = document.querySelectorAll('.moment-card');
+    
+    momentCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+    });
     
     // ========================================
     // CONTACT CARDS REVEAL
